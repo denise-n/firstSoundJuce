@@ -1,0 +1,23 @@
+
+#ifndef SINEWAVE_H
+#define SINEWAVE_H
+
+#include <juce_audio_basics/juce_audio_basics.h>
+// #include <JuceHeader.h>
+
+class SineWave
+{
+public:
+    void prepare (double sampleRate, int numChannels);
+    void process (juce::AudioBuffer<float>& buffer);
+
+private:
+    float amplitude = 0.2f;
+    float frequency = 440.0f;
+    float currentSampleRate = 0.0f;
+    float timeIncrement = 0.0f;
+    std::vector<float> currentTime;
+
+};
+
+#endif // SINEWAVE_H
