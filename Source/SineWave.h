@@ -3,7 +3,6 @@
 #define SINEWAVE_H
 
 #include <juce_audio_basics/juce_audio_basics.h>
-// #include <JuceHeader.h>
 
 class SineWave
 {
