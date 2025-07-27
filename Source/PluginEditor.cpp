@@ -1,6 +1,9 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+#include <juce_gui_basics/juce_gui_basics.h>
+
+
 //==============================================================================
 AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), processorRef (p)
@@ -18,6 +21,8 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAud
     playButton.setButtonText("Playing");
     playButton.setToggleState(true, juce::NotificationType::dontSendNotification);
     playButton.setClickingTogglesState(true);
+    playButton.setColour(juce::TextButton::ColourIds::buttonOnColourId, juce::Colours::green);
+    playButton.setColour(juce::TextButton::ColourIds::buttonColourId, juce::Colours::red);
 
     playButton.onClick = [this]()
     {
