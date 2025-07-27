@@ -18,6 +18,7 @@ private:
     // access the processor object that created it.
     juce::Slider frequencySlider;
     juce::TextButton playButton;
+    juce::Label frequencyLabel {"Frequency Label", "Frequency"};
 
     AudioPluginAudioProcessor& processorRef;
 

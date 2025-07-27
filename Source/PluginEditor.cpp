@@ -32,6 +32,10 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAud
     };
     addAndMakeVisible(playButton);
 
+    // frequency label
+    frequencyLabel.setJustificationType(juce::Justification::centred);
+    addAndMakeVisible(frequencyLabel);
+
     setSize (400, 400);
 }
 
@@ -52,8 +56,19 @@ void AudioPluginAudioProcessorEditor::paint (juce::Graphics& g)
 
 void AudioPluginAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
-    frequencySlider.setBounds(getWidth() / 2 - 50, getHeight() / 2 - 100, 100, 200);
-    playButton.setBounds(getWidth() / 2 - 50, getHeight() / 2 + 120, 100, 20);
+
+    // frequencyLabel.setBounds(getWidth() / 2 - 50, getHeight() / 2 - 120, 100, 20);
+    // frequencySlider.setBounds(getWidth() / 2 - 50, getHeight() / 2 - 100, 100, 200);
+    // playButton.setBounds(getWidth() / 2 - 50, getHeight() / 2 + 120, 100, 20);
+
+     juce::FlexBox flexbox;
+     flexbox.flexDirection = juce::FlexBox::Direction::column;
+     flexbox.justifyContent = juce::FlexBox::JustifyContent::center;
+     flexbox.alignItems = juce::FlexBox::AlignItems::center;
+
+     flexbox.items.add(juce::FlexItem(frequencyLabel).withMinHeight(20).withMinWidth(100));
+     flexbox.items.add(juce::FlexItem(frequencySlider).withMinHeight(200).withMinWidth(100).withMargin(juce::FlexItem::Margin(0, 0, 10, 0)));
+     flexbox.items.add(juce::FlexItem(playButton).withMinHeight(20).withMinWidth(100));
+
+     flexbox.performLayout(getLocalBounds());
 }
